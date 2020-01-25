@@ -21,13 +21,13 @@ delay:
 ```
 
 #### Example
-If you want to delay the variable $weather.temperature for 7 hours and want a sampleRate of 15 minutes.
+If you want to delay the variable $device-id.temperature for 7 hours and want a sampleRate of 15 minutes.
 The config of the device:
 
 ```
 {
-  "id": "<device-id>",
-  "name": "<device-name>",
+  "id": "device-id",
+  "name": "device-name",
   "class": "VariableDelayDevice",
   "sampleRate": 15,
   "delay": 420
