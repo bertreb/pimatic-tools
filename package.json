@@ -28,7 +28,8 @@
   },
   "configSchema": "pimatic-tools-config-schema.coffee",
   "dependencies": {
-    "dateformat": "^3.0.3"
+    "dateformat": "^3.0.3",
+    "lodash": "^4.17.15"
   },
   "peerDependencies": {
     "pimatic": "0.9.*"
