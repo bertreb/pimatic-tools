@@ -44,7 +44,7 @@ The config of the device:
 The delay is 7 hours times 60 minutes per hour is total 420 minutes.
 The 15 minutes sampleRate is the rate the variable is sampled (every 15 minutes) and emitted (also every 15 minutes) with a 7 hours delay.
 
-The "name" is the delayed attribute that can be used as variable $<device-id>.delayed-temperature
+The "name" is the delayed attribute that can be used as variable $\<device-id\>.delayed-temperature
 
 
 The plugin is in development. You could backup Pimatic before you are using this plugin!
