@@ -1,10 +1,11 @@
 # pimatic-tools
 Plugin to provide some extra tools for variable manipulation.
-This plugin supports 1 device; the VariableDelay device.
+The first tool is the VariableDelay device.
 
 ### VariableDelayDevice
 
 The VariableDelay device will give you the possibility to delay one or more existing variables in time.
+In the gui a timestamp is placed in front of the delayed variables. The timestamp is the moment the value was actual/sampled. The timestamp is updated with the variables in pace of the sampleRate. 
 
 The config of the device.
 ```
