@@ -5,7 +5,7 @@ The first tool is the VariableDelay device.
 ### VariableDelayDevice
 
 The VariableDelay device will give you the possibility to delay one or more existing variables in time.
-In the gui a timestamp is placed in front of the delayed variables. The timestamp is the moment the value was actual/sampled. The timestamp is updated with the variables in pace of the sampleRate. 
+In the GUI a timestamp is placed in front of the delayed variables. The timestamp is the moment the value was actual/sampled. The timestamp is updated together with the variables in the pace of the sampleRate.
 
 The config of the device.
 ```
@@ -21,7 +21,7 @@ delay:
 ```
 
 #### Example
-If you want to delay the variable $weather.temperature for 7 hours and want a refresh rate of 15 minutes.
+If you want to delay the variable $weather.temperature for 7 hours and want a sampleRate of 15 minutes.
 The config of the device:
 
 ```
