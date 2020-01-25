@@ -5,7 +5,7 @@ The first tool is the VariableDelay device.
 ### VariableDelayDevice
 
 The VariableDelay device will give you the possibility to delay one or more existing variables in time.
-In the GUI a timestamp is placed in front of the delayed variables. The timestamp is the moment the value was actual/sampled. The timestamp is updated together with the variables in the pace of the sampleRate. On start of the plugin the timestamp stays on the same time until the delay time is reached. After that it will follow the sampleRate update.
+In the GUI a timestamp is placed in front of the delayed variables. The timestamp is the moment the value was actual/sampled. The timestamp is updated together with the variables in the pace of the sampleRate. On start of the plugin or after update of the device config, the delay restarts and the timestamp stays on the same time until the delay time is reached. After that it will follow the sampleRate update.
 
 The config of the device.
 ```
