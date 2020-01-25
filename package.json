@@ -12,7 +12,8 @@
     "pimatic-tools-config-schema.coffee",
     "device-config-schema.coffee",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "HISTORY.md"
   ],
   "homepage": "https://github.com/bertreb/pimatic-tools.git",
   "keywords": [
