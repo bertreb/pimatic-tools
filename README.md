@@ -12,7 +12,7 @@ variables:
   "list of variables to be delayed"
     variable:
       name: "the delayed variable name"
-      variable: "the input pimatic variable 'device-id.attribute-name'"
+      variable: "the input Pimatic variable 'device-id.attribute-name'"
 sampleRate:
   "number of samples per minute and the minute rate the delayed variable update is updated and emitted to the GUI"
 delay:
