@@ -1,0 +1,39 @@
+{
+  "name": "pimatic-tools",
+  "description": "Pimatic plugin for extra tools to manipulatie variables",
+  "author": {
+    "name": "Bert Gierveld",
+    "email": "gitbertreb@gmail.com",
+    "url": "https://github.com/bertreb"
+  },
+  "main": "pimatic-tools",
+  "files": [
+    "pimatic-tools.coffee",
+    "pimatic-tools-config-schema.coffee",
+    "device-config-schema.coffee",
+    "README.md",
+    "LICENSE"
+  ],
+  "homepage": "https://github.com/bertreb/pimatic-tools.git",
+  "keywords": [
+    "pimatic",
+    "variables",
+    "tools"
+  ],
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bertreb/pimatic-tools.git"
+  },
+  "configSchema": "pimatic-tools-config-schema.coffee",
+  "dependencies": {
+    "dateformat": "^3.0.3"
+  },
+  "peerDependencies": {
+    "pimatic": "0.9.*"
+  },
+  "engines": {
+    "node": ">=4",
+    "npm": ">=2"
+  }
+}
