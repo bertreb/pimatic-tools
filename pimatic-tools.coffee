@@ -2,6 +2,7 @@ module.exports = (env) ->
   Promise = env.require 'bluebird'
   assert = env.require 'cassert'
   dateFormat = require('dateformat')
+  Moment = require('moment-timezone')
   _ = require('lodash')
 
 
@@ -29,7 +30,7 @@ module.exports = (env) ->
       @sampleRate = @config.sampleRate ? 15
       @delay = @config.delay ? 0
 
-      @bufferSize = @sampleRate * @delay
+      @bufferSize = Math.round(@delay / @sampleRate)
 
       @_test = 10
       @delayedAttributes = {}
@@ -48,6 +49,22 @@ module.exports = (env) ->
         return Promise.resolve @_timestamp
       )
 
+      ###
+      _buildQueryDeviceAttributeEvents: (queryCriteria = {}) ->
+            {
+              deviceId,
+              attributeName,
+              after,
+              before,
+              order,
+              orderDirection,
+              offset,
+              limit
+            }
+      ###
+
+
+
       for _attr in @config.variables
         do(_attr) =>
           _variable = _attr.variable.trim()
@@ -59,6 +76,7 @@ module.exports = (env) ->
 
           _deviceId = _variable.split(".")[0]
           _attributeId = _variable.split(".")[1]
+
           _device = @framework.deviceManager.getDeviceById(_deviceId)
           if _device?
             for i, _a of _device.attributes
