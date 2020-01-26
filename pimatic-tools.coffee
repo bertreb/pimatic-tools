@@ -2,7 +2,6 @@ module.exports = (env) ->
   Promise = env.require 'bluebird'
   assert = env.require 'cassert'
   dateFormat = require('dateformat')
-  Moment = require('moment-timezone')
   _ = require('lodash')
 
 
@@ -36,10 +35,7 @@ module.exports = (env) ->
 
       @bufferSize = 1 + Math.round(@delay / @sampleRate)
 
-      @_test = 10
-      @delayedAttributes = {}
       @delayedAttributeValues = {}
-      @pimaticDevices = []
       d = new Date()
       @_timestamp = dateFormat(d,"yyyy-mm-dd HH:MM:ss")
 
@@ -132,11 +128,6 @@ module.exports = (env) ->
 
     getValue: () ->
       return _.head(@buffer)
-
-    #getTimestamp: () =>
-    #  _oldestValue = _.head(@buffer)
-    #  return _oldestValue.timestamp
-
 
   plugin = new ToolsPlugin
   return plugin

@@ -21,7 +21,7 @@
     "variables",
     "tools"
   ],
-  "version": "0.0.4",
+  "version": "0.0.5",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bertreb/pimatic-tools.git"
@@ -29,8 +29,7 @@
   "configSchema": "pimatic-tools-config-schema.coffee",
   "dependencies": {
     "dateformat": "^3.0.3",
-    "lodash": "^4.17.15",
-    "moment-timezone": "^0.5.27"
+    "lodash": "^4.17.15"
   },
   "peerDependencies": {
     "pimatic": "0.9.*"
