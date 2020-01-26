@@ -22,14 +22,12 @@ module.exports = {
               type: "string"
               required: true
       sampleRate:
-        description: "number of samples per minute and the minute rate the delayed variable update is updated/emitted"
+        description: "number of minutes between samples and the minutes between the delayed variable is updated/emitted"
         type: "number"
-        required: false
-        default: 15
+        default: 1
       delay:
-        description: "number of minutes the variable value is delayed"
+        description: "total number of minutes the variable value is delayed"
         type: "number"
-        required: false
         default: 0
   }
 }

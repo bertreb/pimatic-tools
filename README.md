@@ -15,10 +15,13 @@ variables:
       name: "the delayed variable name"
       variable: "the input Pimatic variable 'device-id.attribute-name'"
 sampleRate:
-  "number of samples per minute and the minute rate the delayed variable update is updated and emitted to the GUI"
+  "number of minutes between samples and the minutes between the delayed variable is updated/emitted to the GUI"
+  minimum value is 1
 delay:
-  "number of minutes the variable value is delayed"
+  "total number of minutes the variable value is delayed"
+  minimum value is 0
 ```
+A sampleRate of 1 or delay of 0 means that the delayed value is not delayed and has the same value as the used variables
 
 #### Example
 If you want to delay the variable $weather.temperature for 7 hours and want a sampleRate of 15 minutes.

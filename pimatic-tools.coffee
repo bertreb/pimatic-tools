@@ -27,8 +27,12 @@ module.exports = (env) ->
       @attributeValues = {}
       @_vars = @framework.variableManager
 
-      @sampleRate = @config.sampleRate ? 15
+      @sampleRate = @config.sampleRate ? 1
       @delay = @config.delay ? 0
+      if @sampleRate < 1
+        throw new Error ("SampleRate needs to 1 or higher!")
+      if @delay < 0
+        throw new Error ("Delay needs to 0 or higher!")
 
       @bufferSize = Math.round(@delay / @sampleRate)
 
@@ -49,22 +53,6 @@ module.exports = (env) ->
         return Promise.resolve @_timestamp
       )
 
-      ###
-      _buildQueryDeviceAttributeEvents: (queryCriteria = {}) ->
-            {
-              deviceId,
-              attributeName,
-              after,
-              before,
-              order,
-              orderDirection,
-              offset,
-              limit
-            }
-      ###
-
-
-
       for _attr in @config.variables
         do(_attr) =>
           _variable = _attr.variable.trim()
@@ -81,21 +69,21 @@ module.exports = (env) ->
           if _device?
             for i, _a of _device.attributes
               if i is _attributeId
-                @attributes[_attr.name] = 
+                @attributes[_attr.name] =
                   description: _a.description ? _attr.name
                   type: _a.type ? "number"
                   label: _a.label ? _val.name
-                  acronym: _a.acronym ? _val.name       
-                  unit: _a.unit ? ""       
-          
+                  acronym: _a.acronym ? _val.name
+                  unit: _a.unit ? ""
+
           @_createGetter(_attr.name, =>
             return Promise.resolve @delayedAttributeValues[_attr.name].getValue()
           )
-      
+
       updateDelayedVariables = () =>
         try
           for _attr in @config.variables
-            do(_attr) =>              
+            do(_attr) =>
               _variable = _attr.variable.trim()
               _variable = if _variable.startsWith("$") then _variable.substring(1) else _variable
               @_vars.getVariableUpdatedValue(_variable)
@@ -105,7 +93,7 @@ module.exports = (env) ->
                 @_timestamp = _delayedValue.timestamp
                 @emit "timestamp", @_timestamp
               )
-        catch err 
+        catch err
           env.logger.error "error " + err
         @sampler = setTimeout(updateDelayedVariables, @sampleRate * 60000 )
 
@@ -128,15 +116,18 @@ module.exports = (env) ->
       env.logger.debug "DelayBuffer created"
 
     addValue: (val) ->
+      d = new Date()
+      ts = dateFormat(d,"yyyy-mm-dd HH:MM:ss")
+      _val =
+        value: val
+        timestamp: ts
+      if @bufferSize is 0
+        #return realtime value
+        return _val
       if _.size(@buffer) >= @bufferSize
         env.logger.debug "Buffer complete, delay active"
         _updatedBuffer = _.drop(@buffer)
         @buffer = _updatedBuffer
-      d = new Date()
-      ts = dateFormat(d,"yyyy-mm-dd HH:MM:ss")  
-      _val = 
-        value: val
-        timestamp: ts
       @buffer.push _val
       _returnValue = _.head(@buffer)
       env.logger.debug "Value to be added: " + JSON.stringify(_val) + ", return value: " + JSON.stringify(_returnValue)
