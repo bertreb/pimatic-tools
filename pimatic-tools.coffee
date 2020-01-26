@@ -34,7 +34,7 @@ module.exports = (env) ->
       if @delay < 0
         throw new Error ("Delay needs to 0 or higher!")
 
-      @bufferSize = Math.round(@delay / @sampleRate)
+      @bufferSize = 1 + Math.round(@delay / @sampleRate)
 
       @_test = 10
       @delayedAttributes = {}
@@ -121,9 +121,6 @@ module.exports = (env) ->
       _val =
         value: val
         timestamp: ts
-      if @bufferSize is 0
-        #return realtime value
-        return _val
       if _.size(@buffer) >= @bufferSize
         env.logger.debug "Buffer complete, delay active"
         _updatedBuffer = _.drop(@buffer)
