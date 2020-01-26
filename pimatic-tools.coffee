@@ -30,9 +30,9 @@ module.exports = (env) ->
       @sampleRate = @config.sampleRate ? 1
       @delay = @config.delay ? 0
       if @sampleRate < 1
-        throw new Error ("SampleRate needs to 1 or higher!")
+        throw new Error ("SampleRate needs to be 1 or higher!")
       if @delay < 0
-        throw new Error ("Delay needs to 0 or higher!")
+        throw new Error ("Delay needs to be 0 or higher!")
 
       @bufferSize = 1 + Math.round(@delay / @sampleRate)
 
