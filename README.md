@@ -49,5 +49,5 @@ The 15 minutes sampleRate is the rate the variable is sampled (every 15 minutes)
 
 The "name" is the delayed attribute that can be used as variable $\<device-id\>.delayed-temperature
 
-
+-------
 The plugin is in development. You could backup Pimatic before you are using this plugin!
